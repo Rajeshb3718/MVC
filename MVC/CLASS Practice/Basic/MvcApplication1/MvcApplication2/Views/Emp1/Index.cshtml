@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MvcApplication2.Models.EmployeeModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Empno)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empno)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Ename)*@
+            @Html.ActionLink(item.Ename, "Edit", "Emp1", new { id = item.Empno }, new { target = "_blank" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Salary)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Empno }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Empno }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Empno })
+            
+        </td>
+    </tr>
+}
+
+</table>
